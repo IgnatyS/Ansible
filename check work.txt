@@ -1,0 +1,96 @@
+PLAY [Install Docker] *****************************************************************************************************************************************************************************
+
+TASK [Gathering Facts] ****************************************************************************************************************************************************************************
+ok: [vm2]
+ok: [vm3]
+
+TASK [install_docker : Install DOCKER for CentOS] *************************************************************************************************************************************************
+skipping: [vm2]
+ok: [vm3]
+
+TASK [install_docker : Start Docker daemon Centos] ************************************************************************************************************************************************
+skipping: [vm2]
+changed: [vm3]
+
+TASK [install_docker : Docker status Centos] ******************************************************************************************************************************************************
+skipping: [vm2]
+changed: [vm3]
+
+TASK [install_docker : debug] *********************************************************************************************************************************************************************
+skipping: [vm2]
+ok: [vm3] => {
+    "command_output.stdout_lines": [
+        "● docker.service - Docker Application Container Engine",
+        "   Loaded: loaded (/usr/lib/systemd/system/docker.service; enabled; vendor preset: disabled)",
+        "   Active: active (running) since Tue 2022-07-19 21:27:09 UTC; 502ms ago",
+        "     Docs: https://docs.docker.com",
+        " Main PID: 18359 (dockerd)",
+        "    Tasks: 8",
+        "   Memory: 36.0M",
+        "   CGroup: /system.slice/docker.service",
+        "           └─18359 /usr/bin/dockerd -H fd:// --containerd=/run/containerd/containerd.sock",
+        "",
+        "Jul 19 21:27:08 vm3.ru-central1.internal dockerd[18359]: time=\"2022-07-19T21:27:08.457504236Z\" level=info msg=\"scheme \\\"unix\\\" not registered, fallback to default scheme\" module=grpc",
+        "Jul 19 21:27:08 vm3.ru-central1.internal dockerd[18359]: time=\"2022-07-19T21:27:08.457517587Z\" level=info msg=\"ccResolverWrapper: sending update to cc: {[{unix:///run/containerd/containerd.sock  <nil> 0 <nil>}] <nil> <nil>}\" module=grpc",
+        "Jul 19 21:27:08 vm3.ru-central1.internal dockerd[18359]: time=\"2022-07-19T21:27:08.457525092Z\" level=info msg=\"ClientConn switching balancer to \\\"pick_first\\\"\" module=grpc",
+        "Jul 19 21:27:08 vm3.ru-central1.internal dockerd[18359]: time=\"2022-07-19T21:27:08.710217083Z\" level=info msg=\"Loading containers: start.\"",
+        "Jul 19 21:27:08 vm3.ru-central1.internal dockerd[18359]: time=\"2022-07-19T21:27:08.895954394Z\" level=info msg=\"Default bridge (docker0) is assigned with an IP address 172.17.0.0/16. Daemon option --bip can be used to set a preferred IP address\"",
+        "Jul 19 21:27:08 vm3.ru-central1.internal dockerd[18359]: time=\"2022-07-19T21:27:08.987714199Z\" level=info msg=\"Loading containers: done.\"",
+        "Jul 19 21:27:09 vm3.ru-central1.internal dockerd[18359]: time=\"2022-07-19T21:27:09.043242733Z\" level=info msg=\"Docker daemon\" commit=a89b842 graphdriver(s)=overlay2 version=20.10.17",
+        "Jul 19 21:27:09 vm3.ru-central1.internal dockerd[18359]: time=\"2022-07-19T21:27:09.043440184Z\" level=info msg=\"Daemon has completed initialization\"",
+        "Jul 19 21:27:09 vm3.ru-central1.internal systemd[1]: Started Docker Application Container Engine.",
+        "Jul 19 21:27:09 vm3.ru-central1.internal dockerd[18359]: time=\"2022-07-19T21:27:09.101858917Z\" level=info msg=\"API listen on /var/run/docker.sock\""
+    ]
+}
+
+TASK [install_docker : Pre Install Procedures Debian] *********************************************************************************************************************************************
+skipping: [vm3]
+ok: [vm2]
+
+TASK [install_docker : Run recommended commands Debian] *******************************************************************************************************************************************
+skipping: [vm3]
+changed: [vm2]
+
+TASK [install_docker : Install DOCKER for Debian] *************************************************************************************************************************************************
+skipping: [vm3]
+ok: [vm2]
+
+TASK [install_docker : Start Docker daemon Debian] ************************************************************************************************************************************************
+skipping: [vm3]
+ok: [vm2]
+
+TASK [install_docker : Docker Status Debian] ******************************************************************************************************************************************************
+skipping: [vm3]
+changed: [vm2]
+
+TASK [install_docker : debug] *********************************************************************************************************************************************************************
+ok: [vm2] => {
+    "command_output.stdout_lines": [
+        "● docker.service - Docker Application Container Engine",
+        "     Loaded: loaded (/lib/systemd/system/docker.service; enabled; vendor preset: enabled)",
+        "     Active: active (running) since Tue 2022-07-19 21:11:00 UTC; 16min ago",
+        "TriggeredBy: ● docker.socket",
+        "       Docs: https://docs.docker.com",
+        "   Main PID: 3226 (dockerd)",
+        "      Tasks: 8",
+        "     Memory: 29.6M",
+        "     CGroup: /system.slice/docker.service",
+        "             └─3226 /usr/bin/dockerd -H fd:// --containerd=/run/containerd/containerd.sock",
+        "",
+        "Jul 19 21:10:59 vm2 dockerd[3226]: time=\"2022-07-19T21:10:59.625376177Z\" level=warning msg=\"Your kernel does not support CPU realtime scheduler\"",
+        "Jul 19 21:10:59 vm2 dockerd[3226]: time=\"2022-07-19T21:10:59.625382192Z\" level=warning msg=\"Your kernel does not support cgroup blkio weight\"",
+        "Jul 19 21:10:59 vm2 dockerd[3226]: time=\"2022-07-19T21:10:59.625386926Z\" level=warning msg=\"Your kernel does not support cgroup blkio weight_device\"",
+        "Jul 19 21:10:59 vm2 dockerd[3226]: time=\"2022-07-19T21:10:59.625535032Z\" level=info msg=\"Loading containers: start.\"",
+        "Jul 19 21:10:59 vm2 dockerd[3226]: time=\"2022-07-19T21:10:59.809823281Z\" level=info msg=\"Default bridge (docker0) is assigned with an IP address 172.17.0.0/16. Daemon option --bip can be used to set a preferred IP address\"",
+        "Jul 19 21:10:59 vm2 dockerd[3226]: time=\"2022-07-19T21:10:59.880951426Z\" level=info msg=\"Loading containers: done.\"",
+        "Jul 19 21:11:00 vm2 dockerd[3226]: time=\"2022-07-19T21:11:00.014113829Z\" level=info msg=\"Docker daemon\" commit=a89b842 graphdriver(s)=overlay2 version=20.10.17",
+        "Jul 19 21:11:00 vm2 dockerd[3226]: time=\"2022-07-19T21:11:00.014235203Z\" level=info msg=\"Daemon has completed initialization\"",
+        "Jul 19 21:11:00 vm2 systemd[1]: Started Docker Application Container Engine.",
+        "Jul 19 21:11:00 vm2 dockerd[3226]: time=\"2022-07-19T21:11:00.092153589Z\" level=info msg=\"API listen on /run/docker.sock\""
+    ]
+}
+skipping: [vm3]
+
+PLAY RECAP ****************************************************************************************************************************************************************************************
+vm2                        : ok=7    changed=2    unreachable=0    failed=0    skipped=4    rescued=0    ignored=0
+vm3                        : ok=5    changed=2    unreachable=0    failed=0    skipped=6    rescued=0    ignored=0

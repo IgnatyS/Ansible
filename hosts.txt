@@ -1,0 +1,9 @@
+[app]
+vm2 ansible_host=192.168.0.120 ansible_user=ansibleuser ansible_ssh_private_key_file=/home/ansibleuser/sshkeys/vm2
+vm3 ansible_host=192.168.0.130 ansible_user=ansibleuser ansible_ssh_private_key_file=/home/ansibleuser/sshkeys/vm3
+
+[database]
+vm1 ansible_host=192.168.0.110 ansible_user=ansibleuser ansible_ssh_private_key_file=/home/ansibleuser/sshkeys/vm1
+
+[web]
+vm1 ansible_host=192.168.0.110 ansible_user=ansibleuser ansible_ssh_private_key_file=/home/ansibleuser/sshkeys/vm1
