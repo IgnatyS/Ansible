@@ -1,0 +1,48 @@
+---
+# tasks file for deploy_practical_task6
+- block:  #CentOS
+
+  - name: Install DOCKER for CentOS
+    yum: name=docker-ce state=latest
+      
+  - name: Start Docker daemon Centos
+    service: name=docker state=started enabled=yes
+
+  - name: Docker status Centos
+    shell: systemctl status docker
+    register: command_output
+      
+  - debug:
+      var: command_output.stdout_lines
+
+  when: ansible_os_family == "RedHat"
+
+- block:  #Debian
+
+  - name: Pre Install Procedures Debian
+    apt:
+      pkg:
+      - apt-transport-https
+      - ca-certificates
+      - curl
+
+  - name: Run recommended commands Debian
+    shell: |
+      curl -fsSL https://download.docker.com/linux/ubuntu/gpg | sudo apt-key add -
+      add-apt-repository "deb [arch=amd64] https://download.docker.com/linux/ubuntu focal stable"
+      sudo apt update
+
+  - name: Install DOCKER for Debian
+    apt: name=docker-ce state=latest
+      
+  - name: Start Docker daemon Debian
+    service: name=docker state=started enabled=yes
+
+  - name: Docker Status Debian
+    shell: systemctl status docker
+    register: command_output
+      
+  - debug:
+      var: command_output.stdout_lines
+
+  when: ansible_os_family == "Debian"
